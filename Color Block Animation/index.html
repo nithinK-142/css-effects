@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .color-container {
+            height: 200px;
+            width: 600px;
+            padding: 8px 6px;
+            background-color: #000016;
+            border: 1px solid black;
+
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .color-block {
+            height: 100%;
+            width: 140px;
+
+            transition: height 0.8s;
+        }
+
+        .purple {
+            background-color: #8648BD;
+        }
+
+        .pink {
+            background-color: #D85EAA;
+        }
+
+        .salmon {
+            background-color: #FC6CA9;
+        }
+
+        .orange {
+            background-color: #FC9056;
+        }
+
+        .yellow {
+            background-color: #FBC451;
+        }
+
+        .button-container {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            opacity: 30;
+            border: transparent;
+            border-radius: 4px; 
+            color: white;
+            cursor: pointer;
+        }
+
+        .green {
+            background-color: green;
+        }
+
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="color-container">
+            <div class="color-block purple"></div>
+            <div class="color-block pink"></div>
+            <div class="color-block salmon"></div>
+            <div class="color-block orange"></div>
+            <div class="color-block yellow"></div>
+        </div>
+        <div class="button-container">
+            <button class="btn green" onclick="startAnimation()">Start</button>
+            <button class="btn purple" onclick="resetAnimation()">Reset</button>
+            <button class="btn red" onclick="stopAnimation()">Stop</button>
+        </div>
+    </div>
+
+    <script>
+        let animationInterval;
+
+        function startAnimation() {
+            animationInterval = setInterval(function () {
+                document.querySelectorAll('.color-block').forEach(function (block) {
+                    block.style.height = Math.floor(Math.random() * 100) + '%';
+                });
+            }, 1000);
+        }
+
+        function resetAnimation() {
+            clearInterval(animationInterval);
+            document.querySelectorAll('.color-block').forEach(function (block) {
+                block.style.height = '100%';
+            });
+        }
+
+        function stopAnimation() {
+            clearInterval(animationInterval);
+        }
+    </script>
+</body>
+
+</html>
